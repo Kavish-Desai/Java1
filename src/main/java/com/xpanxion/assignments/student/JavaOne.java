@@ -1,5 +1,7 @@
 package com.xpanxion.assignments.student;
 
+import java.util.Scanner;
+
 public class JavaOne {
 
     //
@@ -14,10 +16,31 @@ public class JavaOne {
 
     public void ex1() {
         System.out.println("Student 1: ex1.");
+        System.out.println(" ex1.");
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter your name:");
+        String name = input.nextLine();
+        System.out.println("Your name in uppercase is: " + name.toUpperCase());
+        input.close();
     }
 
     public void ex2() {
         System.out.println("Student 1: ex2.");
+        System.out.println(" ex2.");
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter a String:");
+        String s = input.nextLine();
+        int uppercase = 0;
+
+        for (int i = 0; i < s.length(); i++){
+           char c = s.charAt(i);
+            if(Character.isUpperCase(c)){
+                uppercase++;
+            }
+        }
+
+        System.out.printf("The number of uppercase letters in the String is: %d", uppercase);
     }
 
     public void ex3() {
