@@ -1,6 +1,8 @@
 package com.xpanxion.assignments.student;
 
+import java.util.Random;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class JavaOne {
 
@@ -128,18 +130,81 @@ public class JavaOne {
 
     public void ex7() {
         System.out.println("Student 1: ex7.");
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter first integer: ");
+        int x = input.nextInt();
+        System.out.print("Enter second integer: ");
+        int y = input.nextInt();
+        input.nextLine();
+        System.out.println("Enter operation(+,-,*,/):" );
+        String s = input.nextLine();
+
+        switch (s){
+        case "+" -> System.out.println("Result: " + (x+y));
+        case "-" -> System.out.println("Result: " + (x-y));
+        case "*" -> System.out.println("Result: " + (x*y));
+        case "/" -> System.out.println("Result: " + (double)x/(double)y);
+        default -> System.out.println("Invalid operator");
+        }
+
+
     }
 
     public void ex8() {
         System.out.println("Student 1: ex8.");
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter price per square feet of carpet: ");
+        int price = input.nextInt();
+        input.nextLine();
+        System.out.println("Enter number of rooms: ");
+        int rooms = input.nextInt();
+        int i = 1;
+        double totalCost = 0;
+        while( i <= rooms){
+            System.out.printf("Enter width of room %d: ", i);
+            int width = input.nextInt();
+            System.out.printf("Enter length of the room %d: ", i);
+            int length = input.nextInt();
+            totalCost += (width*length);
+            i++;
+        }
+        System.out.printf("Total cost = $%.2f ",totalCost);
+        
     }
 
     public void ex9() {
         System.out.println("Student 1: ex9.");
+        Scanner input = new Scanner(System.in);
+        Random rand = new Random();
+        int random = rand.nextInt(6);
+        int guess;
+        do {
+            System.out.println("Guess a number: ");
+            guess = input.nextInt();
+            if (guess != random){
+                System.out.println("Try again...");
+            } else {
+                System.out.println("You guessed it!");
+            }    
+        }while (guess != random);
     }
 
     public void ex10() {
         System.out.println("Student 1: ex10.");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a string:");
+        String input = scanner.nextLine();
+        String[] words = input.split(" ");
+
+        for (String word : words) {
+             for (int i = 0; i < word.length(); i++){
+                for(int k = 0; k < i; k++){
+                    System.out.print(" ");
+                }
+                System.out.println(word.charAt(i));
+             }
+        }
+
     }
 
     //
