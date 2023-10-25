@@ -1,6 +1,7 @@
 package com.xpanxion.assignments.student;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -140,8 +141,31 @@ public class JavaTwo {
     }
 
     public void ex8() {
+        var personList = Arrays.asList(
+                new Person(1, "Charlie", "Jones"),
+                new Person(2, "Zoey", "Smith"),
+                new Person(3, "Adam", "Anderson")
+        );
+ 
+        for(int i=0; i<personList.size(); ++i){
+            for(int j=i+1; j<personList.size(); ++j){
+                if(!compare(personList.get(i), personList.get(j))){
+                    Person temp = personList.get(i);
+                    personList.set(i, personList.get(j));
+                    personList.set(j, temp);
+                }
+            }
+        }
+ 
+        for (Person p : personList) {
+            System.out.println(p);
+        }
         
-        
+    }
+    public boolean compare(Person p1, Person p2){
+        if(p1.getFirstName().compareTo(p2.getFirstName()) < 0){
+            return true;
+        } else { return false;}
     }
 
     public void ex9() {
@@ -191,7 +215,7 @@ class Product extends Base{
     double cost;
 
     public Product(int id, String name, double cost){
-       super(id);
+        super(id);
         this.name = name;
         this.cost = cost;
     }
