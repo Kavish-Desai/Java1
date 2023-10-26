@@ -5,10 +5,15 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.concurrent.TimeUnit;
+
+import javax.management.Query;
 
 import com.xpanxion.assignments.shared.PersonRepository;
 
@@ -169,12 +174,26 @@ public class JavaTwo {
     }
 
     public void ex9() {
-        
+        var personList = Arrays.asList(
+                new Person(1, "Charlie", "Jones"),
+                new Person(2, "Zoey", "Smith"),
+                new Person(3, "Adam", "Anderson")
+        );
+
+        personList.stream().filter(p -> p.getLastName().equals("Smith")).forEach(p -> System.out.println(p.toString()));
     }
 
-    public void ex10() {
-        
-
+    public void ex10() throws InterruptedException{
+        LinkedList<Cat> cats = new LinkedList<>();
+        cats.add(new Cat("Alice"));
+        cats.add(new Cat("Bob"));
+        cats.add(new Cat("Charlie"));
+        cats.add(new Cat("Dan"));
+        while(!cats.isEmpty()){
+            System.out.println(cats);
+            cats.removeFirst();
+            TimeUnit.SECONDS.sleep(3);
+        }
     }
 
     //
@@ -295,4 +314,18 @@ class Calculator{
         return num1 / num2;
     }
 
+}
+
+ class Cat {
+    String name;
+    public Cat() {
+    }
+
+    public Cat(String name){
+        this.name = name;
+    }
+
+    public String toString(){
+        return "Cat{name= " + name + "}";
+    }
 }
